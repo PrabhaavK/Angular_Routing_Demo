@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .form-control:focus {
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-container">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" required>
+                    <div class="invalid-feedback">Please enter your username.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" required>
+                    <div class="invalid-feedback">Please enter your password.</div>
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                    <label class="form-check-label" for="rememberMe">Remember me</label>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Login</button>
+                <div class="text-center mt-3">
+                    <a href="#" class="text-muted">Forgot password?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Get input values
+            const username = document.getElementById('username');
+            const password = document.getElementById('password');
+
+            // Basic validation
+            if (username.value.trim() === '') {
+                username.classList.add('is-invalid');
+            } else {
+                username.classList.remove('is-invalid');
+            }
+
+            if (password.value.trim() === '') {
+                password.classList.add('is-invalid');
+            } else {
+                password.classList.remove('is-invalid');
+            }
+
+            // If both fields are filled
+            if (username.value.trim() !== '' && password.value.trim() !== '') {
+                // Simulate login validation (you would replace this with actual authentication)
+                if (username.value.trim() === 'pratik' && password.value.trim() === 'password') {
+                    // Redirect to pratik.html after successful login
+                    window.location.href = 'pratik.component.html';
+                } else {
+                    // Show error for invalid credentials
+                    alert('Invalid username or password');
+                }
+
+                // Optional: Check if remember me is checked
+                if (document.getElementById('rememberMe').checked) {
+                    console.log('Remember me is checked');
+                }
+            }
+        });
+
+        // Remove invalid class when user starts typing
+        document.getElementById('username').addEventListener('input', function() {
+            this.classList.remove('is-invalid');
+        });
+
+        document.getElementById('password').addEventListener('input', function() {
+            this.classList.remove('is-invalid');
+        });
+    </script>
+</body>
+</html>
